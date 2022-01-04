@@ -1,8 +1,16 @@
 package com.example.carros.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Carro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) //A JPA vai fazer o auto incremento desse id
     private Long id;
     private String nome;
+
+    public Carro() {}
 
     public Carro(Long id, String nome) {
         this.id = id;
