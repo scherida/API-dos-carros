@@ -29,4 +29,8 @@ public class CarroService {
         carros.add(new Carro(3L, "Omega"));
         return carros;
     }
+
+    public Iterable<Carro> getCarrosByTipo(String tipo) {
+        return rep.findByTipo(tipo);
+    }
 }
