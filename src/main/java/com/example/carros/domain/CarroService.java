@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarroService {
@@ -16,6 +17,10 @@ public class CarroService {
         return rep.findAll();
     }
 
+    public Optional<Carro> getCarrosById(Long id) {
+        return rep.findById(id);
+    }
+
     public List<Carro> getCarrosFake(){
         List<Carro> carros = new ArrayList<>();
 
@@ -24,5 +29,4 @@ public class CarroService {
         carros.add(new Carro(3L, "Omega"));
         return carros;
     }
-
 }

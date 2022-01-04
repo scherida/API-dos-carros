@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Carro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //A JPA vai fazer o auto incremento desse id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //A JPA vai fazer o auto incremento desse id
     private Long id;
     private String nome;
 
