@@ -3,10 +3,7 @@ package com.example.carros.api;
 import com.example.carros.domain.Carro;
 import com.example.carros.domain.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -14,7 +11,7 @@ import java.util.Optional;
 @RequestMapping("/api/v1/carros")
 public class CarrosController {
 
-    @Autowired //O Spring vai injetar essa dependência, ou veja, vai criar um obrijeto do tip CarroService
+    @Autowired //O Spring vai injetar essa dependência, ou seja, vai criar um objeto do tipo CarroService
     private CarroService service;
 
     @GetMapping
@@ -32,5 +29,9 @@ public class CarrosController {
         return service.getCarrosByTipo(tipo);
     }
 
-
+    @PostMapping
+    public String post(@RequestBody Carro carro){ //@RequestBody - vai converter o json do carro para objeto
+       Carro c = service.save(carro);
+       return "Carro salvo com sucesso: " + c.getId();
+    }
 }
