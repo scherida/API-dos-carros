@@ -31,7 +31,7 @@ public class CarroService {
         return carros;
     }
 
-    public Iterable<Carro> getCarrosByTipo(String tipo) {
+    public List<Carro> getCarrosByTipo(String tipo) {
         return rep.findByTipo(tipo);
     }
 
