@@ -26,18 +26,18 @@ public class CarrosController {
 
     @GetMapping("/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
-        Optional<Carro> carro = service.getCarrosById(id);
+        Optional<CarroDTO> carro = service.getCarrosById(id);
 
 //        new Carro(1L, "Nome", "esportivos");
-//        return carro.map(c -> ResponseEntity.ok(c))
-//                .orElse(ResponseEntity.notFound().build());
+        return carro.map(c -> ResponseEntity.ok(c))
+                .orElse(ResponseEntity.notFound().build());
 
-        if(carro.isPresent()){
-            Carro c = carro.get();
-           return ResponseEntity.ok(c);
-        }else{
-            return ResponseEntity.notFound().build();
-        }
+//        if(carro.isPresent()){
+//            Carro c = carro.get();
+//           return ResponseEntity.ok(c);
+//        }else{
+//            return ResponseEntity.notFound().build();
+//        }
     }
 
     @GetMapping("/tipo/{tipo}")

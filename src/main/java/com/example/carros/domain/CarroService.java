@@ -20,8 +20,8 @@ public class CarroService {
         return rep.findAll().stream().map(CarroDTO::new).collect(Collectors.toList());
     }
 
-    public Optional<Carro> getCarrosById(Long id) {
-        return rep.findById(id);
+    public Optional<CarroDTO> getCarrosById(Long id) {
+        return rep.findById(id).map(CarroDTO::new);
     }
 
     public List<CarroDTO> getCarrosByTipo(String tipo) {
@@ -57,8 +57,7 @@ public class CarroService {
 
     public void delete(Long id) {
         // Busca o carro no banco de dados
-        Optional<Carro> carro = rep.findById(id);
-        if(carro.isPresent()){
+        if(getCarrosById(id).isPresent()){
             rep.deleteById(id);
         }
     }
