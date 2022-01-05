@@ -40,4 +40,10 @@ public class CarrosController {
         Carro c = service.update(carro, id);
         return "Carro atualizado com sucesso: " + c.getId();
     }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") Long id){
+        service.delete(id);
+        return "Carro deletado com sucesso: ";
+    }
 }
