@@ -55,10 +55,12 @@ public class CarroService {
         }
     }
 
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         // Busca o carro no banco de dados
         if(getCarrosById(id).isPresent()){
             rep.deleteById(id);
+            return true;
         }
+        return false;
     }
 }
