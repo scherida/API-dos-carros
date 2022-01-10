@@ -28,9 +28,9 @@ public class CarroService {
         return rep.findByTipo(tipo).stream().map(CarroDTO::create).collect(Collectors.toList());
     }
 
-    public Carro insert(Carro carro) {
+    public CarroDTO insert(Carro carro) {
         Assert.isNull(carro.getId(),"Não foi possível inserir o registro");
-        return rep.save(carro);
+        return CarroDTO.create(rep.save(carro));
     }
 
     public Carro update(Carro carro, Long id) {
